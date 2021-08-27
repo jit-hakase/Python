@@ -11,7 +11,6 @@ class CSV:
                 data = csv.reader(f)
                 hdr = next(data)
                 col_num = len(hdr)
-
                 arr = []
                 for row in data:
                     kv = {}
