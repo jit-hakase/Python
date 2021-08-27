@@ -11,7 +11,7 @@ class JsonDumper(json.JSONEncoder):
             return json.JSONEncoder.default(self, obj)
 
 
-class Json:
+class JS:
     @staticmethod
     def load(arr):
         return json.load(arr)
