@@ -26,7 +26,7 @@ class DB:
                 for col in range(col_num):
                     kv[col_name[col]] = row[col]
                 arr.append(kv)
-            return str(arr)
+            return arr
         except Exception as e:
             print(e)
             return []
