@@ -1,7 +1,29 @@
 import xlrd
 import xlwt
+import csv
 
 
+class CSV:
+    @staticmethod
+    def get_data(file_name):
+        with open(file_name) as f:
+            try:
+                data = csv.reader(f)
+                hdr = next(data)
+                col_num = len(hdr)
+
+                arr = []
+                for row in data:
+                    kv = {}
+                    for col in range(col_num):
+                        kv[hdr[col]] = row[col]
+                    arr.append(kv)
+                return arr
+            except Exception as e:
+                print(e)
+                return []
+
+            
 class ExcelWriter:
     def __init__(self, name):
         self.workbook = xlwt.Workbook()
