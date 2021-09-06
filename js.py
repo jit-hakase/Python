@@ -14,7 +14,7 @@ class JsonDumper(json.JSONEncoder):
 class JS:
     @staticmethod
     def load(arr):
-        return json.load(arr)
+        return json.loads(arr)
 
     @staticmethod
     def dump(arr):
