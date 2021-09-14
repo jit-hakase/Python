@@ -6,9 +6,11 @@ class DB:
         self.csr = self.conn.cursor()
 
     def execute(self, sql):
+        self.conn.ping(reconnect=True)
         self.csr.execute(sql)
 
     def query(self, sql):
+        self.conn.ping(reconnect=True)
         try:
             self.csr.execute(sql)
             data = self.csr.fetchall()
