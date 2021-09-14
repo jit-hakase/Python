@@ -2,7 +2,7 @@ import pymysql
 
 class DB:
     def __init__(self, _host='localhost', _user='root', _password='123456', _database='trade', _port=3306):
-        self.conn = pymysql.connect(host=_host, user=_user, password=_password, database=_database, port=_port, autocommit=True)
+        self.conn = pymysql.connect(host=_host, user=_user, password=_password, database=_database, port=_port)
         self.csr = self.conn.cursor()
 
     def execute(self, sql):
