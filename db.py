@@ -1,17 +1,12 @@
 import pymysql
 
 class DB:
-    def __init__(self, _host='localhost', _user='root', _password='123456', _database='main', _port=3306):
-        self.conn = pymysql.connect(host=_host, user=_user, password=_password, database=_database, port=_port)
+    def __init__(self, _host='localhost', _user='root', _password='123456', _database='trade', _port=3306):
+        self.conn = pymysql.connect(host=_host, user=_user, password=_password, database=_database, port=_port, autocommit=True)
         self.csr = self.conn.cursor()
 
     def execute(self, sql):
-        try:
-            self.csr.execute(sql)
-            self.conn.commit()
-        except Exception as e:
-            print(e)
-            self.conn.rollback()
+        self.csr.execute(sql)
 
     def query(self, sql):
         try:
@@ -29,3 +24,9 @@ class DB:
         except Exception as e:
             print(e)
             return []
+        
+    def commit(self):
+        self.conn.commit()
+
+    def rollback(self):
+        self.conn.rollback()
