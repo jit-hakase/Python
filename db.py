@@ -17,7 +17,7 @@ class DB:
 
     def execute(self, sql):
         self.conn.ping(reconnect=True)
-        self.csr.close()
+        self.csr.execute(sql)
 
     def query(self, sql):
         self.conn.ping(reconnect=True)
@@ -35,5 +35,6 @@ class DB:
                 arr.append(kv)
             return arr
         except Exception as e:
+            self.rollback()
             print(e)
             return []
