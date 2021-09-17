@@ -15,12 +15,12 @@ def run(fork):
     if not fork:
         WSGIServer(('0.0.0.0', 8080), app).serve_forever()
     else:
-        mulserver = WSGIServer(('0.0.0.0', 8080), app)
-        mulserver.start()
+        http_server = WSGIServer(('0.0.0.0', 8080), app)
+        http_server.start()
 
         def serve_forever():
-            mulserver.start_accepting()
-            mulserver._stop_event.wait()
+            http_server.start_accepting()
+            http_server._stop_event.wait()
 
         for i in range(cpu_count()):
             p = Process(target=serve_forever)
