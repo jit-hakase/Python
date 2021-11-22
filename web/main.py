@@ -2,7 +2,6 @@ from gevent import monkey
 from gevent.pywsgi import WSGIServer
 from flask import Flask
 from multiprocessing import cpu_count, Process
-import datetime, os
 
 monkey.patch_all()
 app = Flask(__name__)
